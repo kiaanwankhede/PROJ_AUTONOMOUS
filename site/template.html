@@ -28,7 +28,6 @@
   --ok: #1c7347; --ok-wash: #e2f2e8;
   --warn: #965804; --warn-wash: #faefdb;
   --risk: #b0251c; --risk-wash: #fae5e2;
-  --shadow: 0 1px 2px rgb(19 32 39 / .06), 0 6px 18px rgb(19 32 39 / .05);
   --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -50,7 +49,6 @@
     --ok: #5dc791; --ok-wash: #10271b;
     --warn: #e4a34c; --warn-wash: #2a1f10;
     --risk: #f38c82; --risk-wash: #311613;
-    --shadow: 0 1px 2px rgb(0 0 0 / .45), 0 8px 22px rgb(0 0 0 / .28);
     color-scheme: dark;
   }
 }
@@ -68,7 +66,6 @@
   --ok: #5dc791; --ok-wash: #10271b;
   --warn: #e4a34c; --warn-wash: #2a1f10;
   --risk: #f38c82; --risk-wash: #311613;
-  --shadow: 0 1px 2px rgb(0 0 0 / .45), 0 8px 22px rgb(0 0 0 / .28);
   color-scheme: dark;
 }
 
@@ -103,14 +100,14 @@ a:hover { color: var(--accent-strong); }
 }
 
 /* Type scale */
-h1, h2, h3, h4, h5 { font-family: var(--font-display); color: var(--ink); text-wrap: balance; }
+h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); text-wrap: balance; }
 h1 { font-size: clamp(2.3rem, 6vw, 3.6rem); line-height: 1.04; font-weight: 750; font-stretch: 118%; letter-spacing: -.012em; margin: 0; }
-h2 { font-size: clamp(1.45rem, 3vw, 1.8rem); line-height: 1.2; font-weight: 700; font-stretch: 112%; margin: 0; }
-h3 { font-size: 1.14rem; line-height: 1.3; font-weight: 650; font-stretch: 106%; margin: 0; }
+h2 { font-size: clamp(1.4rem, 3vw, 1.75rem); line-height: 1.2; font-weight: 700; font-stretch: 112%; margin: 0; }
+h3 { font-size: 1.12rem; line-height: 1.3; font-weight: 650; font-stretch: 106%; margin: 0; }
 h4 { font-size: 1rem; line-height: 1.35; font-weight: 650; margin: 0; }
 .label, .eyebrow {
   font-family: var(--font-mono); font-size: .72rem; font-weight: 500; letter-spacing: .09em;
-  text-transform: uppercase; color: var(--ink-3);
+  text-transform: uppercase; color: var(--ink-3); margin: 0;
 }
 .num { font-variant-numeric: tabular-nums; }
 
@@ -125,9 +122,9 @@ h4 { font-size: 1rem; line-height: 1.35; font-weight: 650; margin: 0; }
 
 /* Opening */
 .opening .wrap { padding-block: clamp(2.2rem, 6vw, 4rem) clamp(1.6rem, 4vw, 2.6rem); display: grid; gap: 1.1rem; }
-.opening .lede { font-size: clamp(1.08rem, 2.2vw, 1.28rem); line-height: 1.55; color: var(--ink-2); max-width: 64ch; margin: 0; }
+.opening .lede { font-size: clamp(1.08rem, 2.2vw, 1.27rem); line-height: 1.55; color: var(--ink-2); max-width: 64ch; margin: 0; }
 .opening .lede strong { color: var(--ink); font-weight: 600; }
-.facts { display: flex; flex-wrap: wrap; gap: .5rem 1.6rem; margin: .4rem 0 0; padding: 0; list-style: none; color: var(--ink-3); font-size: .88rem; }
+.facts { display: flex; flex-wrap: wrap; gap: .5rem 1.6rem; margin: .3rem 0 0; padding: 0; list-style: none; color: var(--ink-3); font-size: .88rem; }
 .facts li { display: flex; gap: .4rem; align-items: baseline; }
 .facts b { font-family: var(--font-mono); font-weight: 500; color: var(--ink); font-size: .86rem; }
 
@@ -137,12 +134,12 @@ main { min-width: 0; }
 .toc { min-width: 0; }
 .toc details { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); }
 .toc summary { cursor: pointer; padding: .7rem 1rem; font-family: var(--font-display); font-weight: 650; font-stretch: 106%; }
-.toc nav, .toc .toc-body { padding: 0 1rem 1rem; }
+.toc .toc-body { padding: 0 1rem 1rem; }
 .toc-part { margin: .9rem 0 .35rem; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3); }
 .toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: .1rem; }
 .toc a {
   display: block; padding: .28rem .55rem; border-radius: 6px; color: var(--ink-2);
-  text-decoration: none; font-size: .9rem; line-height: 1.35;
+  text-decoration: none; font-size: .88rem; line-height: 1.35;
 }
 .toc a:hover { background: var(--sunken); color: var(--ink); }
 .toc a[aria-current="true"] { background: var(--accent-wash); color: var(--accent-strong); font-weight: 600; }
@@ -156,19 +153,20 @@ main { min-width: 0; }
 
 /* Parts and sections */
 .part + .part { margin-top: 4.5rem; }
-.part-head { display: grid; gap: .5rem; padding-bottom: 1.2rem; border-bottom: 2px solid var(--ink); margin-bottom: 2.2rem; }
-.part-head .part-title { font-family: var(--font-display); font-size: clamp(1.7rem, 4vw, 2.3rem); font-weight: 750; font-stretch: 116%; line-height: 1.1; margin: 0; }
+.part-head { display: grid; gap: .5rem; padding-bottom: 1.2rem; border-bottom: 2px solid var(--ink); margin-bottom: 2.4rem; }
+.part-head .part-title { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 750; font-stretch: 116%; line-height: 1.12; margin: 0; text-wrap: balance; color: var(--ink); }
 .part-head p { margin: 0; color: var(--ink-2); max-width: 66ch; }
-.sec { scroll-margin-top: 20px; }
-.sec + .sec { margin-top: 3.6rem; }
+.part-head p.label { max-width: none; color: var(--ink-3); }
+.sec + .sec { margin-top: 3.8rem; }
 .sec > header { display: grid; gap: .45rem; margin-bottom: 1.3rem; }
-.sec > header p { margin: 0; color: var(--ink-2); max-width: 68ch; }
+.sec > header p:not(.label) { margin: 0; color: var(--ink-2); max-width: 68ch; }
 h2[id], h3[id] { scroll-margin-top: 20px; }
+.more { margin: 1rem 0 0; font-size: .88rem; }
 .note { font-size: .86rem; color: var(--ink-3); margin: .8rem 0 0; max-width: 72ch; }
 
-/* Autonomy levels */
+/* Chips for autonomy levels */
 .chip {
-  display: inline-flex; align-items: center; gap: .3rem; padding: .08rem .5rem; border-radius: 999px;
+  display: inline-flex; align-items: center; padding: .05rem .5rem; border-radius: 999px;
   font-family: var(--font-mono); font-size: .74rem; font-weight: 500; white-space: nowrap; line-height: 1.6;
 }
 .lv0 { background: var(--l0); color: var(--l0-ink); }
@@ -177,20 +175,55 @@ h2[id], h3[id] { scroll-margin-top: 20px; }
 .lv3 { background: var(--l3); color: var(--l3-ink); }
 .lv4 { background: var(--l4); color: var(--l4-ink); }
 .lv5 { background: var(--l5); color: var(--l5-ink); }
+.chip.none { background: var(--sunken); color: var(--ink-2); border: 1px solid var(--rule); }
 
+/* Takeaways */
+.takeaways { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; }
+@media (min-width: 760px) { .takeaways { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.takeaway { background: var(--surface); padding: 1.05rem 1.2rem 1.15rem; display: grid; gap: .35rem; align-content: start; }
+.takeaway p { margin: 0; color: var(--ink-2); font-size: .93rem; line-height: 1.55; }
+
+/* Autonomy staircase */
 .stairs { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; align-items: end; padding: 1.2rem 1.2rem .9rem; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius) var(--radius) 0 0; }
-.step { display: grid; gap: .35rem; align-content: end; min-width: 0; }
+.step { display: grid; gap: .4rem; align-content: end; min-width: 0; }
 .step .bar { border-radius: 6px 6px 2px 2px; display: flex; align-items: flex-start; justify-content: center; padding-top: .45rem; font-family: var(--font-mono); font-size: .8rem; font-weight: 500; }
-.step:nth-child(1) .bar { height: 46px; } .step:nth-child(2) .bar { height: 70px; } .step:nth-child(3) .bar { height: 94px; }
-.step:nth-child(4) .bar { height: 118px; } .step:nth-child(5) .bar { height: 142px; } .step:nth-child(6) .bar { height: 166px; }
-.step .name { font-size: .8rem; line-height: 1.25; color: var(--ink-2); text-align: center; min-height: 2.5em; }
+.step:nth-child(1) .bar { height: 46px; }
+.step:nth-child(2) .bar { height: 70px; }
+.step:nth-child(3) .bar { height: 94px; }
+.step:nth-child(4) .bar { height: 118px; }
+.step:nth-child(5) .bar { height: 142px; }
+.step:nth-child(6) .bar { height: 166px; }
+.step .name { font-size: .8rem; line-height: 1.25; color: var(--ink-2); text-align: center; }
+.step .bar.lv0 { box-shadow: inset 0 0 0 1px var(--rule); }
 .step.now .bar { outline: 2px solid var(--ink); outline-offset: 2px; }
-.stairs-key { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; padding: .7rem 1.2rem; background: var(--sunken); border: 1px solid var(--rule); border-top: 0; border-radius: 0 0 var(--radius) var(--radius); font-size: .84rem; color: var(--ink-2); }
-.stairs-key .mark { display: inline-block; width: 12px; height: 12px; border-radius: 3px; outline: 2px solid var(--ink); outline-offset: 1px; margin-right: .45rem; vertical-align: -1px; }
+.step.target .bar { outline: 2px dashed var(--ink); outline-offset: 2px; }
+.step.avoid .bar { opacity: .4; }
+.stairs-key { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; padding: .7rem 1.2rem; background: var(--sunken); border: 1px solid var(--rule); border-top: 0; border-radius: 0 0 var(--radius) var(--radius); font-size: .84rem; color: var(--ink-2); }
+.stairs-key span { display: inline-flex; align-items: center; gap: .5rem; }
+.stairs-key i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; background: var(--l2); }
+.stairs-key i.now { outline: 2px solid var(--ink); outline-offset: 1px; }
+.stairs-key i.target { outline: 2px dashed var(--ink); outline-offset: 1px; }
+.stairs-key i.avoid { background: var(--l5); opacity: .4; }
+@media (max-width: 559px) {
+  .stairs { grid-template-columns: 1fr; align-items: stretch; padding: 1rem; }
+  .step { grid-template-columns: 6.4rem minmax(0, 1fr); align-items: center; gap: .6rem; }
+  .step .name { order: -1; text-align: left; }
+  .stairs .step .bar { height: 28px; justify-content: flex-start; align-items: center; padding: 0 .55rem; border-radius: 2px 6px 6px 2px; }
+  .step:nth-child(1) .bar { width: 22%; }
+  .step:nth-child(2) .bar { width: 37%; }
+  .step:nth-child(3) .bar { width: 53%; }
+  .step:nth-child(4) .bar { width: 69%; }
+  .step:nth-child(5) .bar { width: 85%; }
+  .step:nth-child(6) .bar { width: 100%; }
+}
+.aim { display: grid; gap: 8px; margin-top: 12px; }
+@media (min-width: 760px) { .aim { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.aim div { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: .85rem 1rem; display: grid; gap: .4rem; align-content: start; }
+.aim p { margin: 0; font-size: .9rem; line-height: 1.5; color: var(--ink-2); }
+.aim .label { display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; }
 
-/* Generic tables (overview + report) */
+/* Generic tables (overview and report) */
 .table-wrap { overflow-x: auto; margin: 1.4rem 0; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); }
-.table-wrap:focus-visible { outline-offset: 0; }
 table { border-collapse: collapse; width: 100%; font-size: .9rem; line-height: 1.5; }
 th { text-align: left; font-family: var(--font-display); font-weight: 650; font-stretch: 104%; font-size: .8rem; letter-spacing: .02em; color: var(--ink-2); background: var(--sunken); white-space: nowrap; }
 th, td { padding: .62rem .85rem; border-bottom: 1px solid var(--rule-soft); vertical-align: top; }
@@ -200,96 +233,114 @@ td:first-child { font-weight: 550; }
 
 /* Reference architecture */
 .arch { display: grid; gap: 10px; }
-@media (min-width: 760px) { .arch { grid-template-columns: minmax(0, 1fr) 210px; } }
+@media (min-width: 860px) { .arch { grid-template-columns: minmax(0, 1fr) 220px; } }
 .layers { display: grid; gap: 6px; min-width: 0; }
 .layer { display: grid; gap: .5rem; padding: .85rem 1rem; background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; }
-@media (min-width: 620px) { .layer { grid-template-columns: 11.5rem minmax(0, 1fr); align-items: start; } }
+@media (min-width: 620px) { .layer { grid-template-columns: 10.5rem minmax(0, 1fr); align-items: start; } }
 .layer h3 { font-size: .98rem; }
-.layer h3 small { display: block; font-family: var(--font-mono); font-weight: 400; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin-top: .15rem; font-stretch: 100%; }
+.layer h3 small { display: block; font-family: var(--font-mono); font-weight: 400; font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin-top: .2rem; font-stretch: 100%; }
 .pills { display: flex; flex-wrap: wrap; gap: .35rem; margin: 0; padding: 0; list-style: none; }
 .pills li { font-size: .82rem; padding: .12rem .55rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--sunken); color: var(--ink); line-height: 1.5; }
-.layer.control { border-color: var(--accent); }
-.crosscut { display: grid; gap: 6px; align-content: stretch; min-width: 0; }
-@media (min-width: 760px) { .crosscut { grid-template-rows: auto repeat(5, 1fr); } }
-.crosscut .label { padding: 0 .2rem; align-self: end; }
-.cc { padding: .7rem .85rem; border-radius: 8px; background: var(--accent-wash); border: 1px solid transparent; }
-.cc h4 { font-size: .9rem; color: var(--accent-strong); }
+.crosscut { display: grid; gap: 6px; align-content: start; min-width: 0; }
+@media (min-width: 860px) { .crosscut { grid-template-rows: auto repeat(6, 1fr); align-content: stretch; } }
+.crosscut > .label { padding: .1rem .2rem .2rem; }
+.cc { padding: .65rem .8rem; border-radius: 8px; background: var(--accent-wash); }
+.cc h4 { font-size: .88rem; color: var(--accent-strong); }
 .cc p { margin: .15rem 0 0; font-size: .8rem; line-height: 1.4; color: var(--ink-2); }
 
 /* Curriculum */
-.tiers { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; margin: 0 0 1rem; padding: 0; list-style: none; font-size: .85rem; color: var(--ink-2); }
-.tier { display: inline-block; font-family: var(--font-mono); font-size: .68rem; font-weight: 500; letter-spacing: .04em; padding: .05rem .4rem; border-radius: 4px; border: 1px solid currentColor; line-height: 1.5; white-space: nowrap; }
-.tier.core { color: var(--accent-strong); background: var(--accent-wash); border-color: transparent; }
-.tier.work { color: var(--ink-2); }
-.tier.aware { color: var(--ink-3); border-style: dashed; }
-.domains { display: grid; gap: 12px; }
-@media (min-width: 700px) { .domains { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.domain { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem 1.1rem 1.1rem; display: grid; gap: .6rem; align-content: start; min-width: 0; }
-.domain header { display: flex; justify-content: space-between; gap: .8rem; align-items: baseline; }
-.domain header .label { white-space: nowrap; }
-.domain ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem; }
-.domain li { display: grid; grid-template-columns: 4.6rem minmax(0, 1fr); gap: .6rem; align-items: baseline; font-size: .9rem; line-height: 1.45; }
-.domain li span:last-child { color: var(--ink); }
-.domain li em { font-style: normal; color: var(--ink-3); }
+.domains { display: grid; gap: 10px; }
+@media (min-width: 720px) {
+  .domains { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .domain.wide { grid-column: 1 / -1; }
+  .domain.wide ul { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.6rem; }
+}
+.domain { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem 1.1rem 1.1rem; display: grid; gap: .55rem; align-content: start; min-width: 0; }
+.domain ul { margin: 0; padding-left: 1.05rem; display: grid; gap: .3rem; font-size: .9rem; line-height: 1.45; }
+.domain li::marker { color: var(--ink-3); }
 
 /* Roadmap */
-.phases { display: grid; gap: 12px; counter-reset: phase; }
-@media (min-width: 900px) { .phases { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-.phase { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); display: grid; grid-template-rows: auto 1fr auto; min-width: 0; overflow: hidden; }
-.phase > header { padding: .9rem 1rem .8rem; border-bottom: 1px solid var(--rule-soft); display: grid; gap: .3rem; }
-.phase .when { display: flex; justify-content: space-between; align-items: center; gap: .5rem; }
-.phase .body { padding: .8rem 1rem; display: grid; gap: .7rem; align-content: start; font-size: .88rem; line-height: 1.5; }
-.phase .body h4 { font-family: var(--font-mono); font-size: .68rem; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3); margin-bottom: .2rem; }
-.phase .body ul { margin: 0; padding-left: 1.05rem; display: grid; gap: .2rem; }
-.phase .body p { margin: 0; }
-.phase .gate { padding: .75rem 1rem; background: var(--sunken); border-top: 1px solid var(--rule-soft); font-size: .84rem; line-height: 1.45; }
-.phase .gate b { font-family: var(--font-mono); font-size: .68rem; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3); display: block; margin-bottom: .15rem; }
+.gantt { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem 1.1rem .8rem; display: grid; gap: .5rem; }
+.g-row { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: .8rem; align-items: center; }
+.g-name { font-size: .84rem; line-height: 1.25; color: var(--ink); }
+.g-name span { display: block; font-family: var(--font-mono); font-size: .66rem; color: var(--ink-3); letter-spacing: .04em; }
+.g-track {
+  position: relative; height: 24px;
+  border-left: 1px solid var(--rule); border-right: 1px solid var(--rule);
+  background: linear-gradient(to right, var(--rule-soft) 1px, transparent 1px) 0 0 / 25% 100% repeat-x;
+}
+.g-bar { position: absolute; top: 4px; bottom: 4px; border-radius: 4px; min-width: 6px; }
+.g-bar.setup { background: repeating-linear-gradient(135deg, var(--ink-3) 0 2px, transparent 2px 6px); border: 1px solid var(--ink-3); }
+.g-bar.lv2 { background: var(--l2); }
+.g-bar.lv3 { background: var(--l3); }
+.g-bar.lv4 { background: linear-gradient(to right, var(--l4) 88%, transparent); }
+.g-axis { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: .8rem; }
+.g-ticks { position: relative; height: 1.1rem; font-family: var(--font-mono); font-size: .68rem; color: var(--ink-3); }
+.g-ticks span { position: absolute; top: 0; transform: translateX(-50%); white-space: nowrap; }
+.g-ticks span:first-child { transform: none; }
+.g-ticks span:last-child { transform: translateX(-100%); }
+.g-key { display: flex; flex-wrap: wrap; gap: .3rem 1.2rem; font-size: .8rem; color: var(--ink-3); padding-top: .4rem; border-top: 1px solid var(--rule-soft); }
+.g-key span { display: inline-flex; gap: .45rem; align-items: center; }
+.g-key i { display: inline-block; width: 18px; height: 10px; border-radius: 3px; }
+.g-key i.setup { background: repeating-linear-gradient(135deg, var(--ink-3) 0 2px, transparent 2px 6px); border: 1px solid var(--ink-3); }
+@media (max-width: 559px) {
+  .g-row, .g-axis { grid-template-columns: 5.8rem minmax(0, 1fr); gap: .6rem; }
+  .g-name span { display: none; }
+}
+.phase-list { display: grid; gap: 10px; margin-top: 12px; }
+.ph { display: grid; gap: .9rem 1.5rem; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem 1.15rem 1.1rem; }
+@media (min-width: 860px) { .ph { grid-template-columns: 12.5rem minmax(0, 1.15fr) minmax(0, 1fr); } }
+.ph-head { display: grid; gap: .35rem; align-content: start; justify-items: start; }
+.ph-head .label { color: var(--accent); }
+.ph-head h3 { font-size: 1.06rem; }
+.ph-head .when { font-family: var(--font-mono); font-size: .78rem; color: var(--ink-2); }
+.ph h4 { font-family: var(--font-mono); font-size: .66rem; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3); margin-bottom: .35rem; }
+.ph ul { margin: 0; padding-left: 1.05rem; display: grid; gap: .2rem; font-size: .88rem; line-height: 1.5; }
+.ph .gate p { margin: 0; font-size: .88rem; line-height: 1.5; }
+.callout { margin-top: 12px; border: 1px solid var(--rule); background: var(--sunken); border-radius: var(--radius); padding: 1rem 1.15rem; display: grid; gap: .5rem; }
+.callout ol { margin: 0; padding-left: 1.2rem; display: grid; gap: .3rem; font-size: .92rem; line-height: 1.5; }
 
-/* Oversight grid */
-.oversight { display: grid; gap: 8px; }
-@media (min-width: 700px) { .oversight { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-.mode { border-radius: var(--radius); padding: 1rem 1.1rem; display: grid; gap: .45rem; align-content: start; border: 1px solid var(--rule); background: var(--surface); }
-.mode .label { color: inherit; opacity: .85; }
-.mode h3 { font-size: 1.02rem; }
-.mode p { margin: 0; font-size: .88rem; line-height: 1.5; color: var(--ink-2); }
-.mode.hitl { box-shadow: inset 0 3px 0 var(--risk); }
-.mode.hotl { box-shadow: inset 0 3px 0 var(--warn); }
-.mode.auto { box-shadow: inset 0 3px 0 var(--ok); }
-.mode .who { font-size: .82rem; color: var(--ink-3); }
+/* Approval tiers */
+.tiers-grid { display: grid; gap: 10px; }
+@media (min-width: 720px) { .tiers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.tcard { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem 1.1rem 1.1rem; display: grid; gap: .6rem; align-content: start; }
+.tcard header { display: flex; flex-wrap: wrap; gap: .4rem .6rem; align-items: center; justify-content: space-between; }
+.sev { font-family: var(--font-mono); font-size: .72rem; font-weight: 500; padding: .08rem .55rem; border-radius: 999px; white-space: nowrap; }
+.sev.low { background: var(--ok-wash); color: var(--ok); }
+.sev.mid { background: var(--warn-wash); color: var(--warn); }
+.sev.high { background: var(--risk-wash); color: var(--risk); }
+.tcard h3 { font-size: 1rem; }
+.tcard dl { margin: 0; display: grid; gap: .5rem; }
+.tcard dt { font-family: var(--font-mono); font-size: .66rem; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3); }
+.tcard dd { margin: .1rem 0 0; font-size: .9rem; line-height: 1.5; }
+.controls { margin: 14px 0 0; padding: 1rem 1.15rem 1rem 2.3rem; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); display: grid; gap: .35rem; font-size: .9rem; line-height: 1.5; }
+@media (min-width: 860px) { .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2.6rem; } }
 
-/* Callouts */
-.callout { border: 1px solid var(--rule); background: var(--surface); border-radius: var(--radius); padding: 1rem 1.15rem; display: grid; gap: .4rem; max-width: 78ch; }
-.callout p { margin: 0; }
-.callout.warn { background: var(--warn-wash); border-color: transparent; }
-.callout.warn .label { color: var(--warn); }
-
-/* Takeaways */
-.takeaways { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; }
-@media (min-width: 760px) { .takeaways { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.takeaway { background: var(--surface); padding: 1rem 1.15rem 1.1rem; display: grid; gap: .3rem; align-content: start; }
-.takeaway p { margin: 0; color: var(--ink-2); font-size: .93rem; line-height: 1.55; }
+/* Team */
+.groups { display: grid; gap: 10px; }
+@media (min-width: 760px) { .groups { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.group { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem 1.1rem 1.1rem; display: grid; gap: .6rem; align-content: start; }
+.group > p { margin: 0; font-size: .88rem; color: var(--ink-2); line-height: 1.5; }
+.roles { list-style: none; margin: 0; padding: 0; display: grid; gap: .55rem; }
+.roles li { display: grid; gap: .05rem; font-size: .88rem; line-height: 1.45; }
+.roles b { font-weight: 600; }
+.roles span { color: var(--ink-2); }
 
 /* Report prose */
 .prose { font-size: 1rem; }
-.prose > :is(p, ul, ol, blockquote, dl, h3, h4, h5, h6, pre) { max-width: var(--measure); }
+.prose > :is(p, ul, ol, blockquote, h3, h4, pre) { max-width: var(--measure); }
 .prose h2 { margin: 3.4rem 0 1rem; padding-top: 1.3rem; border-top: 1px solid var(--rule); max-width: 46ch; }
-.prose > h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
 .prose h3 { margin: 2.1rem 0 .55rem; }
 .prose h4 { margin: 1.6rem 0 .45rem; color: var(--ink-2); }
 .prose p { margin: 0 0 1rem; }
 .prose ul, .prose ol { margin: 0 0 1.1rem; padding-left: 1.3rem; }
 .prose li { margin: .28rem 0; }
-.prose li > ul, .prose li > ol { margin: .25rem 0 .4rem; }
 .prose strong { font-weight: 600; }
 .prose blockquote { margin: 1.2rem 0; padding: .2rem 0 .2rem 1.1rem; border-left: 2px solid var(--rule); color: var(--ink-2); }
-.prose blockquote p:last-child { margin-bottom: 0; }
-.prose code { font-family: var(--font-mono); font-size: .86em; background: var(--sunken); border: 1px solid var(--rule-soft); padding: .05em .35em; border-radius: 4px; }
+.prose code { font-family: var(--font-mono); font-size: .86em; background: var(--sunken); border: 1px solid var(--rule-soft); padding: .05em .35em; border-radius: 4px; overflow-wrap: anywhere; }
 .prose pre { overflow-x: auto; background: var(--sunken); border: 1px solid var(--rule); border-radius: 8px; padding: .9rem 1rem; font-size: .85rem; line-height: 1.5; }
 .prose pre code { background: none; border: 0; padding: 0; }
 .prose hr { border: 0; border-top: 1px solid var(--rule); margin: 2.4rem 0; max-width: var(--measure); }
-.prose .table-wrap { max-width: 100%; }
-.prose .refs { font-size: .86rem; line-height: 1.5; color: var(--ink-2); }
-.prose .refs li { margin: .35rem 0; overflow-wrap: anywhere; }
 
 footer.site { border-top: 1px solid var(--rule); background: var(--surface); }
 footer.site .wrap { padding-block: 1.6rem; display: flex; flex-wrap: wrap; gap: .6rem 2rem; justify-content: space-between; font-size: .86rem; color: var(--ink-3); }
@@ -312,9 +363,15 @@ footer.site p { margin: 0; max-width: 70ch; }
 
 <header class="opening">
   <div class="wrap">
-    <p class="eyebrow">What it is, what to learn, how to build it</p>
+    <p class="eyebrow">What it is · what to learn · how to build it</p>
     <h1>The Autonomous Enterprise</h1>
-    <!-- OPENING -->
+    <p class="lede"><strong>Earn autonomy one governed process at a time.</strong> “Autonomous enterprise” is mostly a vendor label for a 25-year-old idea, in which business processes run as governed sense–decide–act loops under authority that people can revoke. In November 2026 only about 17% of organizations have deployed AI agents at all. This briefing sets out what is real, the concepts the Gen AI team needs, and a 24-month plan that raises autonomy only on evidence.</p>
+    <ul class="facts">
+      <li>Researched <b>21 Nov 2026</b></li>
+      <li><b>6</b> research streams</li>
+      <li><b>223</b> linked sources</li>
+      <li>Full report about <b class="num">{{REPORT_MINUTES}}</b> min</li>
+    </ul>
   </div>
 </header>
 
@@ -329,13 +386,397 @@ footer.site p { margin: 0; max-width: 70ch; }
   </aside>
 
   <main id="main">
-    <!-- OVERVIEW -->
+    <section class="part" data-part="The plan at a glance" aria-labelledby="part-plan">
+      <div class="part-head">
+        <p class="label">Part 1 · Summary for the team</p>
+        <p class="part-title" id="part-plan">The plan at a glance</p>
+        <p>Each section summarizes one part of the research and links to the evidence in Part 2.</p>
+      </div>
+
+      <section class="sec">
+        <header>
+          <p class="label">What it is</p>
+          <h2 id="short-answer">The short answer</h2>
+        </header>
+        <div class="takeaways">
+          <div class="takeaway">
+            <h3>A label for an old idea</h3>
+            <p>The phrase belongs mostly to SAP, which built Sapphire 2026 around it. The idea goes back to IBM’s autonomic computing in 2001. Every credible definition keeps people setting intent and accountable for outcomes.</p>
+          </div>
+          <div class="takeaway">
+            <h3>Reality trails the spending</h3>
+            <p>About 17% of organizations have deployed agents (Gartner), and 89% of executives in a central-bank survey report no productivity effect so far (NBER). Gartner expects 40% of enterprises to demote or decommission autonomous agents by 2027.</p>
+          </div>
+          <div class="takeaway">
+            <h3>Engineering discipline decides success</h3>
+            <p>The deciding skills are context engineering, evaluation (60–80% of development time), one identity per agent, design that resists prompt injection, cost per completed task and clear business ownership.</p>
+          </div>
+          <div class="takeaway">
+            <h3>Autonomy is a dial for each process</h3>
+            <p>Build the governed platform first. Prove two or three reversible pilots where people approve each consequential action, and promote a process to more autonomy only when evals, incident data and unit economics justify it.</p>
+          </div>
+        </div>
+        <p class="more"><a href="#spending-soars-while-fewer-than-one-in-five-firms-run-agents">Evidence: hype versus reality in November 2026</a></p>
+      </section>
+
+      <section class="sec">
+        <header>
+          <p class="label">What it is</p>
+          <h2 id="autonomy-levels">Autonomy is a dial, set per process</h2>
+          <p>The report scores every process on one L0–L5 scale, mapped from TM Forum’s autonomous-network levels, Gartner’s 2026 governance ladder and academic work. An autonomous enterprise is a distribution across the process portfolio, not a yes-or-no label.</p>
+        </header>
+        <div class="stairs" role="img" aria-label="Autonomy levels L0 to L5. Most enterprises are at L1 to L2 in November 2026; L3 is the target for 2026 to 2028; L5 is not advisable.">
+          <div class="step"><div class="bar lv0">L0</div><div class="name">Manual</div></div>
+          <div class="step now"><div class="bar lv1">L1</div><div class="name">Assisted</div></div>
+          <div class="step now"><div class="bar lv2">L2</div><div class="name">Partial</div></div>
+          <div class="step target"><div class="bar lv3">L3</div><div class="name">Conditional</div></div>
+          <div class="step"><div class="bar lv4">L4</div><div class="name">High</div></div>
+          <div class="step avoid"><div class="bar lv5">L5</div><div class="name">Full</div></div>
+        </div>
+        <div class="stairs-key">
+          <span><i class="now"></i>Where most enterprises are, Nov 2026</span>
+          <span><i class="target"></i>Realistic target for 2026–28</span>
+          <span><i class="avoid"></i>Not advisable for enterprise processes</span>
+        </div>
+        <div class="aim">
+          <div>
+            <p class="label"><span class="chip lv1">L1</span><span class="chip lv2">L2</span> Today</p>
+            <p>Most enterprises run copilots that retrieve, draft and recommend (L1), plus agents that execute bounded steps while a person approves each consequential action (L2). There are pockets of L3.</p>
+          </div>
+          <div>
+            <p class="label"><span class="chip lv3">L3</span> Target</p>
+            <p>An agent runs one process in one domain end to end, and people handle escalations and exceptions. Aim for this in bounded, high-volume processes whose actions are reversible and whose outcomes can be verified.</p>
+          </div>
+          <div>
+            <p class="label"><span class="chip lv4">L4</span> Only with proof</p>
+            <p>The loop closes across domains while people set intent, monitor and audit. Reserve it for domains with proven rollback, verification and liability cover, as telecom operators did when they stopped at Level 4.</p>
+          </div>
+        </div>
+        <p class="more"><a href="#a-usable-definition-measures-delegated-authority-per-process">Full level mapping and the working definition</a></p>
+      </section>
+
+      <section class="sec">
+        <header>
+          <p class="label">What to build</p>
+          <h2 id="architecture">Reference architecture</h2>
+          <p>Standardize the edges with open protocols and keep business logic in code on an open framework. Build the control layer once, so every agent inherits it.</p>
+        </header>
+        <div class="arch">
+          <div class="layers">
+            <div class="layer">
+              <h3>Triggers<small>Where work starts</small></h3>
+              <ul class="pills">
+                <li>Business events on Kafka or Flink</li>
+                <li>Employee and customer requests</li>
+                <li>Agents on other platforms, via A2A v1.0</li>
+              </ul>
+            </div>
+            <div class="layer">
+              <h3>Orchestration<small>Control flow</small></h3>
+              <ul class="pills">
+                <li>Deterministic workflow code</li>
+                <li>One tool-using agent in a harness</li>
+                <li>Orchestrator-workers for read-heavy work</li>
+                <li>Durable execution: Temporal, Restate, DBOS</li>
+                <li>Approvals bound to the exact action</li>
+              </ul>
+            </div>
+            <div class="layer">
+              <h3>Tools and actions<small>Agent to tool</small></h3>
+              <ul class="pills">
+                <li>MCP servers on the 2026-07-28 spec</li>
+                <li>MCP gateway and private registry, pinned and hashed</li>
+                <li>System-of-record APIs</li>
+                <li>Sandboxed code execution</li>
+                <li>Computer use only where no API exists</li>
+              </ul>
+            </div>
+            <div class="layer">
+              <h3>Knowledge and context<small>Governed context</small></h3>
+              <ul class="pills">
+                <li>Semantic and metric layer</li>
+                <li>Ontology or knowledge graph</li>
+                <li>Hybrid retrieval with reranking</li>
+                <li>Governed memory</li>
+                <li>Process-mining context</li>
+                <li>Context assembly as versioned code</li>
+              </ul>
+            </div>
+            <div class="layer">
+              <h3>Models<small>A portfolio</small></h3>
+              <ul class="pills">
+                <li>Model gateway with token budgets</li>
+                <li>Frontier model for planning and verification</li>
+                <li>Cheaper worker models</li>
+                <li>Small fine-tuned models, later</li>
+                <li>Prompt caching and batch</li>
+              </ul>
+            </div>
+          </div>
+          <div class="crosscut">
+            <p class="label">Across every layer</p>
+            <div class="cc"><h4>Identity</h4><p>One identity per agent, a named human sponsor, short-lived tokens scoped to one resource.</p></div>
+            <div class="cc"><h4>Policy checkpoint</h4><p>Default-deny rules as code at every tool call: agent, delegating user, data origin, risk tier.</p></div>
+            <div class="cc"><h4>Evals and release</h4><p>Eval harness in CI, pass^k gates, then shadow, canary and rollback.</p></div>
+            <div class="cc"><h4>Observability and audit</h4><p>OpenTelemetry GenAI traces and a signed, append-only action log.</p></div>
+            <div class="cc"><h4>Kill switch and budgets</h4><p>Switch in a config store, token revocation, caps on steps, tokens, dollars and time.</p></div>
+            <div class="cc"><h4>Agent registry</h4><p>Owners, risk tier, autonomy level, eval results and retirement criteria for every agent.</p></div>
+          </div>
+        </div>
+        <p class="more"><a href="#the-technical-stack-rewards-simple-control-flow-and-governed-con">Architecture patterns, protocols, platforms and lock-in</a></p>
+      </section>
+
+      <section class="sec">
+        <header>
+          <p class="label">What to learn</p>
+          <h2 id="what-to-learn">What the team must learn</h2>
+          <p>Every engineer needs all five cores, with depth varying by role. Skill is proven by shipping an agent with evals, traces and a threat model, not by collecting certificates.</p>
+        </header>
+        <div class="domains">
+          <div class="domain">
+            <p class="label">Deepest for agent engineers</p>
+            <h3>Technical core</h3>
+            <ul>
+              <li>Workflows versus agents, and when to use neither</li>
+              <li>Harness loops, loop budgets and sub-agents</li>
+              <li>MCP (2026-07-28 spec) and A2A v1.0</li>
+              <li>Durable execution and checkpoints</li>
+              <li>Model portfolios: frontier, worker and small models</li>
+            </ul>
+          </div>
+          <div class="domain">
+            <p class="label">Deepest for data and knowledge engineers</p>
+            <h3>Data core</h3>
+            <ul>
+              <li>Context engineering and context rot</li>
+              <li>Hybrid retrieval and reranking</li>
+              <li>Semantic and metric layers</li>
+              <li>Memory as a governed data product</li>
+              <li>Data readiness, use case by use case</li>
+            </ul>
+          </div>
+          <div class="domain">
+            <p class="label">Deepest for evaluation engineers</p>
+            <h3>Quality core</h3>
+            <ul>
+              <li>Error analysis on real traces</li>
+              <li>Outcome-graded evals and validated LLM judges</li>
+              <li>pass@k versus pass^k</li>
+              <li>OpenTelemetry GenAI tracing</li>
+              <li>Cost per completed task</li>
+            </ul>
+          </div>
+          <div class="domain">
+            <p class="label">Deepest for AI security engineers</p>
+            <h3>Security core</h3>
+            <ul>
+              <li>The lethal trifecta and the Agents Rule of Two</li>
+              <li>OWASP Top 10 for Agentic Applications</li>
+              <li>Agent identity, OAuth 2.1 and token exchange</li>
+              <li>Policy as code with Cedar or OPA</li>
+              <li>Tool supply-chain hygiene</li>
+            </ul>
+          </div>
+          <div class="domain wide">
+            <p class="label">Deepest for product managers and leads</p>
+            <h3>Organization and regulation</h3>
+            <ul>
+              <li>Business ownership and stop criteria for every pilot</li>
+              <li>Redesigning the workflow before automating it</li>
+              <li>Approval design that avoids “human in the loop theater”</li>
+              <li>EU AI Act dates, GDPR Article 22, Colorado and California rules</li>
+              <li>Liability for agent actions stays with the deployer</li>
+              <li>Value measured against a baseline taken before the agent</li>
+            </ul>
+          </div>
+        </div>
+        <div class="table-wrap" tabindex="0">
+          <table>
+            <thead><tr><th>Tier</th><th>Who</th><th>Proof of skill</th></tr></thead>
+            <tbody>
+              <tr><td>0 · Everyone</td><td>All staff who work alongside agents</td><td>Short internal assessment</td></tr>
+              <tr><td>1 · Builders</td><td>Low-code builders in business units</td><td>A governed agent, registered with a named owner</td></tr>
+              <tr><td>2 · Engineers</td><td>The Gen AI team, 6–8 weeks part-time</td><td>A small agent with an eval suite, traces and a threat model</td></tr>
+              <tr><td>3 · Specialists</td><td>Leads for evaluation, platform and security</td><td>One cloud certification: AWS AIP-C01, Microsoft AI-103 then AB-100, or Google Professional Agentic Architect</td></tr>
+              <tr><td>4 · Residency</td><td>Every engineer, once, for 12 weeks</td><td>A production agent that passes its exit gate</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="more"><a href="#learn-in-tiers-and-prove-skill-by-shipping">Courses, certifications and the residency model</a></p>
+      </section>
+
+      <section class="sec">
+        <header>
+          <p class="label">How to implement</p>
+          <h2 id="roadmap">The 24-month roadmap</h2>
+          <p>Five phases, each ending in an exit gate. The durations are the report’s estimates, not a published standard. Governance comes first, and autonomy rises only on evidence.</p>
+        </header>
+        <div class="gantt" role="img" aria-label="Timeline over 24 months. Phase 0, Mobilize, weeks 0 to 6. Phase 1, Foundation, weeks 2 to 10. Phase 2, Pilots at L2, months 2 to 6. Phase 3, Scale and reuse up to L3, months 6 to 12. Phase 4, Agentic operating model with selective L4, months 12 to 24 and beyond.">
+          <div class="g-row"><div class="g-name">0 · Mobilize<span>Weeks 0–6</span></div><div class="g-track"><div class="g-bar setup" style="left:0%;width:5.75%"></div></div></div>
+          <div class="g-row"><div class="g-name">1 · Foundation<span>Weeks 2–10</span></div><div class="g-track"><div class="g-bar setup" style="left:1.92%;width:7.67%"></div></div></div>
+          <div class="g-row"><div class="g-name">2 · Pilots<span>Months 2–6</span></div><div class="g-track"><div class="g-bar lv2" style="left:8.33%;width:16.67%"></div></div></div>
+          <div class="g-row"><div class="g-name">3 · Scale and reuse<span>Months 6–12</span></div><div class="g-track"><div class="g-bar lv3" style="left:25%;width:25%"></div></div></div>
+          <div class="g-row"><div class="g-name">4 · Operating model<span>Months 12–24+</span></div><div class="g-track"><div class="g-bar lv4" style="left:50%;width:50%"></div></div></div>
+          <div class="g-axis" aria-hidden="true"><div></div><div class="g-ticks"><span style="left:0%">0</span><span style="left:25%">6</span><span style="left:50%">12</span><span style="left:75%">18</span><span style="left:100%">24 months</span></div></div>
+          <div class="g-key">
+            <span><i class="setup"></i>Setup, no agent autonomy yet</span>
+            <span><i class="lv2"></i>Up to L2</span>
+            <span><i class="lv3"></i>Up to L3</span>
+            <span><i class="lv4"></i>L3 portfolio, L4 selectively</span>
+          </div>
+        </div>
+        <div class="phase-list">
+          <article class="ph">
+            <div class="ph-head"><p class="label">Phase 0</p><h3>Mobilize</h3><span class="when">Weeks 0–6</span><span class="chip none">Decisions, not code</span></div>
+            <div><h4>What the team builds</h4><ul><li>Executive sponsor and named business owners</li><li>Use-case intake and scoring</li><li>Risk tiers by autonomy and reversibility</li><li>Measured baselines and stop criteria</li><li>Agent registry schema and threat-model template</li></ul></div>
+            <div class="gate"><h4>Exit gate</h4><p>Two or three scored use cases, each with an owner, a baseline, a target autonomy level and criteria for stopping it.</p></div>
+          </article>
+          <article class="ph">
+            <div class="ph-head"><p class="label">Phase 1</p><h3>Foundation</h3><span class="when">Weeks 2–10, in parallel</span><span class="chip none">Platform</span></div>
+            <div><h4>What the team builds</h4><ul><li>Model gateway with token budgets</li><li>One identity per agent</li><li>MCP gateway and private tool registry</li><li>Default-deny policy checkpoint</li><li>OpenTelemetry tracing and an eval harness in CI</li><li>Sandboxed execution and a kill switch in a config store</li><li>Shadow and canary release pipeline</li></ul></div>
+            <div class="gate"><h4>Exit gate</h4><p>A reference agent passes red-team testing, the kill switch and token revocation have been tested, and traces run end to end.</p></div>
+          </article>
+          <article class="ph">
+            <div class="ph-head"><p class="label">Phase 2</p><h3>Pilots</h3><span class="when">Months 2–6, about 90 days each</span><span class="chip lv2">L2</span></div>
+            <div><h4>What the team builds</h4><ul><li>A back-office document or case workflow</li><li>A read-only knowledge or research agent</li><li>An engineering or IT-operations agent whose outputs can be verified</li><li>Each pilot starts by redesigning the workflow</li></ul></div>
+            <div class="gate"><h4>Exit gate</h4><p>Owner-approved acceptance thresholds and the pass^k target are met, security review is passed, cost per completed task is within budget, and value is measured against the baseline.</p></div>
+          </article>
+          <article class="ph">
+            <div class="ph-head"><p class="label">Phase 3</p><h3>Scale and reuse</h3><span class="when">Months 6–12</span><span class="chip lv3">L2 → L3</span></div>
+            <div><h4>What the team builds</h4><ul><li>Online evals and regression suites</li><li>Promotion of reversible actions from L2 to L3</li><li>Reusable MCP servers</li><li>Showback or chargeback of costs</li><li>Registry lifecycle management and incident runbooks</li></ul></div>
+            <div class="gate"><h4>Exit gate</h4><p>Escalation, override and incident rates hold steady for a full quarter at L3, and second-wave agents are built mostly from shared components.</p></div>
+          </article>
+          <article class="ph">
+            <div class="ph-head"><p class="label">Phase 4</p><h3>Agentic operating model</h3><span class="when">Months 12–24 and beyond</span><span class="chip lv4">L4 selectively</span></div>
+            <div><h4>What the team builds</h4><ul><li>End-to-end process redesign</li><li>A target ratio of people to agents for each process</li><li>L4 only where rollback, verification and liability cover are proven</li><li>Readiness for EU Annex III obligations by 2 Dec 2027</li></ul></div>
+            <div class="gate"><h4>Exit gate</h4><p>The portfolio target is met, for example a set share of material process volume at L3 or higher, with audited controls.</p></div>
+          </article>
+        </div>
+        <div class="callout">
+          <p class="label">First moves for this quarter</p>
+          <ol>
+            <li>Pick two or three candidate processes, measure their baselines and write stop criteria for each.</li>
+            <li>Stand up the model gateway, per-agent identity, tracing and the eval harness before the first pilot ships.</li>
+            <li>Start the Tier 2 engineering track, 6–8 weeks part-time, alongside the platform work.</li>
+          </ol>
+        </div>
+        <p class="more"><a href="#a-five-phase-24-month-roadmap-raises-autonomy-only-on-evidence">Phase details and use-case scoring</a></p>
+      </section>
+
+      <section class="sec">
+        <header>
+          <p class="label">How to implement</p>
+          <h2 id="approvals">Who approves what</h2>
+          <p>Governance scales with autonomy and consequence, and the platform enforces it. Each tool action is scored on reversibility, financial or legal impact, data sensitivity, external visibility and blast radius.</p>
+        </header>
+        <div class="tiers-grid">
+          <article class="tcard">
+            <header><span class="sev low">Tier 0 · Low risk</span><span class="chip lv4">Up to L4</span></header>
+            <h3>Read-only actions inside the organization</h3>
+            <dl><div><dt>Control</dt><dd>Autonomous and logged.</dd></div></dl>
+          </article>
+          <article class="tcard">
+            <header><span class="sev low">Tier 1 · Low risk</span><span class="chip lv3">Up to L3</span></header>
+            <h3>Reversible writes inside the organization</h3>
+            <dl><div><dt>Control</dt><dd>Autonomous, with a sample reviewed after the fact.</dd></div></dl>
+          </article>
+          <article class="tcard">
+            <header><span class="sev mid">Tier 2 · Approval first</span><span class="chip lv2">Up to L2</span></header>
+            <h3>External messages, small payments, access changes</h3>
+            <dl><div><dt>Control</dt><dd>Approved in advance by the requester or owner, tied to the exact action.</dd></div></dl>
+          </article>
+          <article class="tcard">
+            <header><span class="sev high">Tier 3 · A person decides</span><span class="chip lv2">L2, decision by a person</span></header>
+            <h3>Irreversible actions, large payments, regulated decisions</h3>
+            <dl><div><dt>Control</dt><dd>Two approvals or specialist review, with the human decision recorded.</dd></div></dl>
+          </article>
+        </div>
+        <ul class="controls">
+          <li>Every agent has a registry entry naming its business owner and technical owner.</li>
+          <li>Before building, check the Rule of Two and threat-model against MAESTRO and the OWASP agentic Top 10.</li>
+          <li>Every tool call passes a default-deny policy checkpoint.</li>
+          <li>Every action goes to a signed, append-only log covering user, agent, model, tool, parameters, policy decision and approver.</li>
+          <li>Named people hold the authority to suspend and restore each agent.</li>
+          <li>Approvers see the exact action, its parameters and where untrusted input came from, not the agent’s summary.</li>
+        </ul>
+        <p class="more"><a href="#govern-with-tiered-approvals-and-controls-outside-the-model">Approval matrix, standing controls and contract terms</a></p>
+      </section>
+
+      <section class="sec">
+        <header>
+          <p class="label">How to implement</p>
+          <h2 id="team">Who does what</h2>
+          <p>A hub-and-spoke model. Business functions own outcomes and the remaining risk, a central platform team builds the control layer once, and small product pods build and run each agent.</p>
+        </header>
+        <div class="groups">
+          <article class="group">
+            <h3>Business functions</h3>
+            <p>Own each agent’s outcome and remaining risk.</p>
+            <ul class="roles">
+              <li><b>Business owner and agent supervisors</b><span>Outcomes, remaining risk and exception handling</span></li>
+              <li><b>Domain expert</b><span>The final call on quality and failure labels</span></li>
+            </ul>
+          </article>
+          <article class="group">
+            <h3>Product pods</h3>
+            <p>Small cross-functional teams that build and run each agent.</p>
+            <ul class="roles">
+              <li><b>AI or agent engineer</b><span>Agent logic, context assembly, tool and MCP integration</span></li>
+              <li><b>Evaluation and quality engineer</b><span>Eval suites, graders, LLM-judge validation, release gates</span></li>
+              <li><b>AI product manager</b><span>Use-case scoring, baselines, KPIs, acceptance criteria</span></li>
+            </ul>
+          </article>
+          <article class="group">
+            <h3>Central platform team</h3>
+            <p>Builds the control layer once for every agent.</p>
+            <ul class="roles">
+              <li><b>Agent platform (AgentOps) engineer</b><span>Gateway, runtime, CI/CD, observability, cost controls</span></li>
+              <li><b>Data and knowledge engineer</b><span>Retrieval, semantic-layer access, memory policy</span></li>
+            </ul>
+          </article>
+          <article class="group">
+            <h3>Risk, security and governance</h3>
+            <p>Sets risk tiers, tests agents and controls the gates to production.</p>
+            <ul class="roles">
+              <li><b>AI security engineer</b><span>Threat models, red-teaming, policy as code, tool supply chain</span></li>
+              <li><b>Architecture and investment board</b><span>Approves each move to production</span></li>
+            </ul>
+          </article>
+        </div>
+        <p class="note">Two staffing rules follow from the evidence. Evaluation is a full role in every pod, because error analysis and evals take 60–80% of development time. Forward-deployed engineers, who land the first use cases, are scarce, so grow them in-house through the 12-week residency.</p>
+        <p class="more"><a href="#staff-a-hub-and-spoke-team-with-named-owners">Roles, skills and where each sits</a></p>
+      </section>
+
+      <section class="sec">
+        <header>
+          <p class="label">How to implement</p>
+          <h2 id="scorecard">How we know it’s working</h2>
+          <p>Each metric answers one question for each process: has this agent earned more autonomy, the same, or less?</p>
+        </header>
+        <div class="table-wrap" tabindex="0">
+          <table>
+            <thead><tr><th>Dimension</th><th>Measure</th><th>What it gates</th></tr></thead>
+            <tbody>
+              <tr><td>Value</td><td>Cost per case against the pre-agent baseline; cycle time; cash savings reported apart from time saved</td><td>No expansion without measured value</td></tr>
+              <tr><td>Quality</td><td>Task success rate; pass^k across repeated runs; defects and rework; incidents by severity</td><td>L3 requires pass^k and incident thresholds the owner set in advance</td></tr>
+              <tr><td>Autonomy</td><td>Straight-through rate; escalation rate and precision; override and reversal rate</td><td>Rising overrides trigger review or demotion</td></tr>
+              <tr><td>Efficiency</td><td>Cost per completed task including human review; tokens per task; 95th-percentile latency</td><td>Sustained cost increases trigger review</td></tr>
+              <tr><td>Experience</td><td>User satisfaction; how often users reject agent output; staff workload</td><td>Falling satisfaction blocks rollout</td></tr>
+              <tr><td>Risk</td><td>Policy violations; prompt-injection detections; permission drift; kill-switch use and time to contain</td><td>A severe incident suspends autonomy until reviewed</td></tr>
+              <tr><td>Portfolio</td><td>Share of processes and transaction volume at each level; people-to-agent ratio per process</td><td>Progress toward the team’s own autonomy target</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="more"><a href="#measure-success-with-a-scorecard-that-gates-autonomy">Scorecard detail, and why escalation precision matters</a></p>
+      </section>
+      <!-- /part -->
+    </section>
 
     <section class="part" data-part="Full research report" aria-labelledby="part-report">
       <div class="part-head">
-        <p class="label">Part 2 · <span class="num">{{REPORT_WORDS}}</span> words · about <span class="num">{{REPORT_MINUTES}}</span> min</p>
-        <p class="part-title" id="part-report">The research</p>
-        <p>The full findings behind the plan, with sources. Figures are dated; vendor-reported numbers are marked as such.</p>
+        <p class="label">Part 2 · Full research report · <span class="num">{{REPORT_WORDS}}</span> words · about <span class="num">{{REPORT_MINUTES}}</span> min</p>
+        <p class="part-title" id="part-report">Earn autonomy one governed process at a time</p>
+        <p>The evidence behind the plan, with 223 linked sources. Figures are dated, and vendor-reported numbers are marked as such.</p>
       </div>
       <div class="prose report">
 {{REPORT}}
@@ -347,8 +788,8 @@ footer.site p { margin: 0; max-width: 70ch; }
 
 <footer class="site">
   <div class="wrap">
-    <p>Research compiled 21 November 2026 from public analyst, vendor, standards-body and academic sources. Check fast-moving facts (protocol versions, regulation dates, product names) before relying on them.</p>
-    <p><a href="https://github.com/kiaanwankhede/PROJ_AUTONOMOUS" target="_blank" rel="noopener">Source on GitHub</a> · <a href="#main">Back to top</a></p>
+    <p>Research compiled 21 November 2026 from public analyst, vendor, standards-body and academic sources. Check fast-moving facts such as protocol versions, regulation dates and product names before relying on them.</p>
+    <p><a href="https://github.com/kiaanwankhede/PROJ_AUTONOMOUS/blob/claude/exciting-sagan-p5h11v/reports/Autonomous%20enterprise%20concepts%20and%20roadmap.md" target="_blank" rel="noopener">Report as Markdown</a> · <a href="https://github.com/kiaanwankhede/PROJ_AUTONOMOUS/tree/claude/exciting-sagan-p5h11v/research_notes" target="_blank" rel="noopener">Research notes</a> · <a href="#main">Back to top</a></p>
   </div>
 </footer>
 
@@ -358,7 +799,7 @@ footer.site p { margin: 0; max-width: 70ch; }
   const wide = window.matchMedia('(min-width: 1100px)');
   const syncToc = () => { if (details) details.open = wide.matches; };
   syncToc();
-  wide.addEventListener ? wide.addEventListener('change', syncToc) : wide.addListener(syncToc);
+  if (wide.addEventListener) wide.addEventListener('change', syncToc); else wide.addListener(syncToc);
 
   const links = [...document.querySelectorAll('.toc a[href^="#"]')];
   links.forEach((a) => a.addEventListener('click', () => { if (!wide.matches && details) details.open = false; }));
