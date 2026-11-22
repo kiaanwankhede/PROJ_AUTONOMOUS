@@ -1,0 +1,52 @@
+name: Publish site
+
+# Rebuilds the page from the report and publishes it to the gh-pages branch,
+# which GitHub Pages serves at https://kiaanwankhede.github.io/PROJ_AUTONOMOUS/
+on:
+  push:
+    branches:
+      - claude/exciting-sagan-p5h11v
+      - main
+    paths:
+      - "reports/**"
+      - "site/**"
+      - ".github/workflows/publish-site.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-site
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out sources
+        uses: actions/checkout@v4
+
+      - name: Build the page
+        working-directory: site
+        run: |
+          npm ci --no-audit --no-fund
+          node build.mjs
+
+      - name: Publish to gh-pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch --depth=1 origin gh-pages
+          git worktree add --detach "$RUNNER_TEMP/site" FETCH_HEAD
+          cp docs/index.html "$RUNNER_TEMP/site/index.html"
+          touch "$RUNNER_TEMP/site/.nojekyll"
+          cd "$RUNNER_TEMP/site"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Page unchanged; nothing to publish."
+            exit 0
+          fi
+          git commit -m "Publish site from ${GITHUB_SHA::7}"
+          git push origin HEAD:gh-pages

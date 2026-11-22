@@ -10,21 +10,9 @@ Research briefing and team plan for the Gen AI engineering team: what the "auton
 |---|---|
 | `reports/Autonomous enterprise concepts and roadmap.md` | The full research report: about 14,650 words with 223 linked sources |
 | `research_notes/Autonomous enterprise concepts and roadmap/` | Notes from the six research streams: definitions and market, agent architecture and protocols, data/evals/AgentOps, governance/security/regulation, adoption evidence, and implementation and team skills |
-| `site/` | Page template (`template.html`), build script (`build.mjs`) and deploy script (`deploy.sh`) |
-| `docs/index.html` | The built page |
+| `site/` | Page template (`template.html`) and build script (`build.mjs`) |
+| `.github/workflows/publish-site.yml` | Publishes the site automatically |
 
-## Updating the site
+## How the site stays up to date
 
-GitHub Pages serves the `gh-pages` branch. After editing the report or `site/template.html`, run:
-
-```bash
-site/deploy.sh
-```
-
-It rebuilds `docs/index.html` from the report and publishes it to `gh-pages`. Commit your source changes on your working branch as usual.
-
-To preview without publishing, build the page and open `docs/index.html` in a browser:
-
-```bash
-cd site && npm install && npm run build
-```
+Nothing needs to be run by hand. Whenever the report or the page template changes, the **Publish site** workflow rebuilds the page and publishes it to the `gh-pages` branch, and GitHub Pages serves it at the link above within a minute or two.
